@@ -3,12 +3,25 @@
 <head>
 	<title>Chat Node Js</title>
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <body>
-<ul id="messages"></ul>
-<form>
-	<input id="m"></input>
-	<button>Send</button>
-</form>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading"><h4>Chat Node Js Socket.io</h4></div>
+			<div class="panel-body">
+			<ul id="messages" class="list-group">
+				
+			</ul>
+			<form class="form">
+				<input id="m" class="form-control" placeholder="Enter The Message..."></input>
+			</form>	
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="socket.io/socket.io.js"></script>
@@ -20,7 +33,7 @@
 		return false;
 	});
 	socket.on('chat',function (msg){
-		$('#messages').append($('<li>').text(msg));
+		$('#messages').append($('<li class="list-group-item list-group-item-info">').text(msg));
 	});
 </script>
 </html>
