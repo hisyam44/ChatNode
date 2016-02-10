@@ -12,10 +12,10 @@
 			<div class="panel-heading"><h4>Chat Node Js Socket.io</h4></div>
 			<div class="panel-body">
 			<ul id="messages" class="list-group">
-				
+				<li class="list-group-item list-group-item-success" id="online"></li>
 			</ul>
 			<form class="form">
-				<input id="m" class="form-control" placeholder="Enter The Message..."></input>
+				<input id="m" class="form-control" placeholder="Enter The Message..." required focused></input>
 			</form>	
 			</div>
 		</div>
@@ -34,6 +34,9 @@
 	});
 	socket.on('chat',function (msg){
 		$('#messages').append($('<li class="list-group-item list-group-item-info">').text(msg));
+	});
+	socket.on('Online', function(num){
+		$('#online').text('Status : '+num+' User Online');
 	});
 </script>
 </html>

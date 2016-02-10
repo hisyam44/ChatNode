@@ -6,11 +6,15 @@ app.set('port',(process.env.PORT || 5000))
 app.get('/', function (request,response){
 	response.sendFile(__dirname+'/index.html');
 });
-
+var num = 0;
 io.on('connection',function (socket){
-	console.log('a user Connecting');
+	num += 1;
+	io.emit('Online',num);
+	console.log('Users Online : '+num);
 	socket.on('disconnect',function (){
-		console.log('User disconnected');
+		num -= 1;
+		io.emit('Online',num);
+		console.log('Users Online : '+num);
 	});
 	socket.on('chat', function(msg){
 		io.emit('chat',msg);
